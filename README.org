@@ -1,0 +1,5 @@
+* Advent of Code 2020
+
+My AoC solutions for 2020. I'll probably drop out at some point
+again... (:
+
