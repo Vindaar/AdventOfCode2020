@@ -41,10 +41,9 @@ proc runDay1 =
   block Part1:
     let tup = data.sum2To2020
     echo "Product part 1 is: ", tup[0] * tup[1]
-  block Part1:
+  block Part2:
     let tup = data.sum3To2020
     echo "Product part 2 is: ", tup[0] * tup[1] * tup[2]
-
 
 when isMainModule:
   runTest()
