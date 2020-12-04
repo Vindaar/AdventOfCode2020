@@ -56,13 +56,12 @@ type
     pfPid = "pid" # (Passport ID)
     pfCid = "cid" # (Country ID)
   Passport = object
-    fields: set[PassportField]
     data: Table[PassportField, string]
 
 proc validatePassports(ps: seq[Passport]): int =
   for pId in ps:
-    if pId.fields.card == 8 or
-       (pId.fields.card == 7 and pfCid notin pId.fields):
+    if pId.data.len == 8 or
+       (pId.data.len == 7 and pfCid notin pId.data):
       inc result
 
 proc verifyYear(s: string, range: Slice[int]): bool =
@@ -83,8 +82,8 @@ proc verifyColor(s: string): bool =
 
 proc validatePassportsPart2(ps: seq[Passport]): int =
   for pId in ps:
-    if pId.fields.card == 8 or
-       (pId.fields.card == 7 and pfCid notin pId.fields):
+    if pId.data.len == 8 or
+       (pId.data.len == 7 and pfCid notin pId.datag):
       # perform validation of fields
       var valid = true
       for key, val in pId.data:
@@ -115,14 +114,11 @@ proc parseInput(input: string): seq[Passport] =
       val = ""
     of '\n':
       result.add pId
-      pId.fields = {}
       pId.data = initTable[PassportField, string]()
     else:
       idx += s.parseUntil(buf, {' ', '\n'}, start = idx)
       if buf.scanf("$w:$*", key, val):
-        let kEnum = parseEnum[PassportField](key)
-        pId.fields.incl kEnum
-        pId.data[kEnum] = val
+        pId.data[parseEnum[PassportField](key)] = val
     inc idx
   result.add pId
 
