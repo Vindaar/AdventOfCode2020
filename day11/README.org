@@ -1,0 +1,9 @@
+* Day 11
+
+Solution part 1:
+
+[[./grid_evolution_cols_96_rows_99_part1.gif]]
+
+Solution part 2:
+
+[[./grid_evolution_cols_96_rows_99_part2.gif]]
