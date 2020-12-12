@@ -1,0 +1,7 @@
+* Day 12
+
+My ship moves!
+
+[[./out/ship_movement_part1.png]]
+
+[[./out/ship_movement_part2.png]]
